@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon slot="icon-only" [name]="article?.isFavorite ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="article">
+  <img [src]="article.mainImage" class="main-image"/>
+
+  <div class="ion-padding">
+    <ion-chip color="primary">{{ article.categories[0] }}</ion-chip>
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.author }} • {{ article.date }}</p>
+    <p class="content-text">{{ article.content }}</p>
+  </div>
+  
+  <div class="ion-padding" *ngIf="article.images.length > 0">
+    <img [src]="selectedImage" class="slide-image" style="width: 100%; margin-bottom: 10px;"/>
+    <ion-segment scrollable>
+      <ion-segment-button *ngFor="let img of article.images" (click)="selectImage(img)">
+        <img [src]="img" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;"/>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-item lines="none" class="ion-padding-top">
+    <ion-label>Beri Rating:</ion-label>
+    <div>
+      <ion-button fill="clear" (click)="rateNews(1)"><ion-icon name="star-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" (click)="rateNews(2)"><ion-icon name="star-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" (click)="rateNews(3)"><ion-icon name="star-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" (click)="rateNews(4)"><ion-icon name="star-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" (click)="rateNews(5)"><ion-icon name="star-outline"></ion-icon></ion-button>
+    </div>
+  </ion-item>
+
+  <div class="ion-padding">
+    <h3>Komentar</h3>
+    <ion-item>
+      <ion-textarea [(ngModel)]="newComment" placeholder="Tulis komentar Anda..."></ion-textarea>
+      <ion-button (click)="addComment()" slot="end">Kirim</ion-button>
+    </ion-item>
+
+    <ion-list>
+      <ion-item *ngFor="let comment of article.comments">
+        <ion-label>
+          <strong>{{ comment.user }}</strong>
+          <p>{{ comment.text }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>
