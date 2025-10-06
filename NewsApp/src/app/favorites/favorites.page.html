@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div *ngIf="favoriteArticles.length === 0" class="ion-text-center ion-padding">
+      <p>Anda belum memiliki berita favorit.</p>
+    </div>
+
+    <ion-item *ngFor="let article of favoriteArticles" [routerLink]="['/news-detail', article.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="article.mainImage">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.author }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

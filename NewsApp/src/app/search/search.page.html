@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Search News</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder="Cari judul berita" (ionInput)="handleInput($event)"></ion-searchbar>
+  
+  <ion-list>
+    <ion-item *ngFor="let article of filteredArticles" [routerLink]="['/news-detail', article.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="article.mainImage">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.author }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

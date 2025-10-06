@@ -1,20 +1,62 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      News App
+      Breaking News
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/search']">
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">News App</ion-title>
+      <ion-title size="large">Breaking News</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-card [routerLink]="['/news-detail', breakingNews.id]">
+    <div class="card-image-container">
+      <img [src]="breakingNews.mainImage" />
+      <div class="card-overlay-content">
+        <ion-chip color="primary">{{ breakingNews.categories[0] }}</ion-chip>
+        <h2>{{ breakingNews.title }}</h2>
+        <p>{{ breakingNews.author }} • {{ breakingNews.date }}</p>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-list-header>
+    <ion-label>Categories</ion-label>
+    <ion-button [routerLink]="['/news-list']">View all</ion-button>
+  </ion-list-header>
+  <div class="category-chips">
+    <ion-chip *ngFor="let category of categories" [routerLink]="['/news-list', {category: category}]" outline="true">
+      <ion-label>{{ category }}</ion-label>
+    </ion-chip>
   </div>
+
+
+  <ion-list-header>
+    <ion-label>Recommendation</ion-label>
+  </ion-list-header>
+
+  <ion-list>
+    <ion-item *ngFor="let news of recommendations" [routerLink]="['/news-detail', news.id]" lines="none">
+      <ion-thumbnail slot="start">
+        <img [src]="news.mainImage">
+      </ion-thumbnail>
+      <ion-label>
+        <h3>{{ news.title }}</h3>
+        <p>{{ news.author }} • {{ news.date }}</p>
+        <p>
+          <ion-icon name="star" color="warning"></ion-icon> {{ news.rating }}
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
