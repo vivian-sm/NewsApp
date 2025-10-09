@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NEWS_ARTICLES } from '../news-data';
+import { NEWS_ARTICLES } from '../data';
 
 @Component({
   selector: 'app-search',

@@ -1,25 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NEWS_ARTICLES } from '../news-data';
+import { NEWS_ARTICLES } from '../data';
 
 @Component({
   selector: 'app-news-detail',
   templateUrl: './news-detail.page.html',
   styleUrls: ['./news-detail.page.scss'],
-  standalone:false
+  standalone: false,
 })
+
 export class NewsDetailPage implements OnInit {
   article: any;
   newComment: string = '';
   selectedImage: string | undefined;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       const articleId = params.get('id');
       if (articleId) {
-        this.article = NEWS_ARTICLES.find(article => article.id === +articleId);
+        this.article = NEWS_ARTICLES.find(
+          (article) => article.id === +articleId
+        );
         if (this.article && this.article.images.length > 0) {
           this.selectedImage = this.article.images[0];
         }

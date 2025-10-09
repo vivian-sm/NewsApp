@@ -1,6 +1,14 @@
-export const NEWS_CATEGORIES = ['Sports', 'Technology', 'Economy', 'Health'];
+// data.ts
+import { NewsArticle, User } from './interfaces';
 
-export const NEWS_ARTICLES = [
+export const USERS: User[] = [
+  { username: 'budi123', name: 'Budi Santoso', password: 'budiPass123' },
+  { username: 'ani456', name: 'Ani Rahmawati', password: 'aniPass456' },
+];
+
+export const NEWS_CATEGORIES: string[] = ['Sports', 'Technology', 'Economy', 'Health'];
+
+export const NEWS_ARTICLES: NewsArticle[] = [
   {
     id: 1,
     title: 'Alexander wears modified helmet in road races',
@@ -10,7 +18,8 @@ export const NEWS_ARTICLES = [
     rating: 4.5,
     ratingsCount: 150,
     isFavorite: false,
-    content: 'As a tech department, we’re usually pretty good at spotting tech that’s out of the ordinary. During time trials we’re used to seeing new aero innovation, and while there are certainly aero tricks used in road stages, they are harder to spot.',
+    content:
+      'As a tech department, we’re usually pretty good at spotting tech that’s out of the ordinary. During time trials we’re used to seeing new aero innovation, and while there are certainly aero tricks used in road stages, they are harder to spot.',
     mainImage: 'https://i.ibb.co/L8zPScf/cyclists-race.jpg',
     images: [
       'https://i.ibb.co/L8zPScf/cyclists-race.jpg',
@@ -19,8 +28,8 @@ export const NEWS_ARTICLES = [
       'https://i.ibb.co/kH6v9Yb/cyclist-motion.jpg'
     ],
     comments: [
-      { user: 'Budi', text: 'Berita yang sangat menarik!' },
-      { user: 'Ani', text: 'Penjelasannya mudah dipahami.' }
+      { user: USERS[0], text: 'Berita yang sangat menarik!' },
+      { user: USERS[1], text: 'Penjelasannya mudah dipahami.' }
     ]
   },
   {
@@ -32,13 +41,14 @@ export const NEWS_ARTICLES = [
     rating: 4.8,
     ratingsCount: 210,
     isFavorite: true,
-    content: 'Volleyball requires a combination of strength, agility, and teamwork. This article explores the essential training regimens for aspiring volleyball players to excel on the court.',
+    content:
+      'Volleyball requires a combination of strength, agility, and teamwork. This article explores the essential training regimens for aspiring volleyball players to excel on the court.',
     mainImage: 'https://i.ibb.co/Yc8T2Kx/volleyball-training.jpg',
     images: [
-       'https://i.ibb.co/Yc8T2Kx/volleyball-training.jpg',
-       'https://i.ibb.co/MfZF3jJ/volleyball-spike.jpg',
-       'https://i.ibb.co/z5tF0mH/volleyball-team.jpg',
-       'https://i.ibb.co/gDHv4hR/volleyball-player.jpg'
+      'https://i.ibb.co/Yc8T2Kx/volleyball-training.jpg',
+      'https://i.ibb.co/MfZF3jJ/volleyball-spike.jpg',
+      'https://i.ibb.co/z5tF0mH/volleyball-team.jpg',
+      'https://i.ibb.co/gDHv4hR/volleyball-player.jpg'
     ],
     comments: []
   },
@@ -51,7 +61,8 @@ export const NEWS_ARTICLES = [
     rating: 4.9,
     ratingsCount: 500,
     isFavorite: false,
-    content: 'Artificial Intelligence is reshaping our world. From autonomous vehicles to personalized medicine, discover the breakthroughs that are defining the next generation of technology.',
+    content:
+      'Artificial Intelligence is reshaping our world. From autonomous vehicles to personalized medicine, discover the breakthroughs that are defining the next generation of technology.',
     mainImage: 'https://i.ibb.co/WcWzX4Y/ai-technology.jpg',
     images: [
       'https://i.ibb.co/WcWzX4Y/ai-technology.jpg',
@@ -70,7 +81,8 @@ export const NEWS_ARTICLES = [
     rating: 4.2,
     ratingsCount: 120,
     isFavorite: false,
-    content: 'New fiscal policies have sent ripples through the global markets. Experts analyze the potential long-term effects on trade and investment across major economies.',
+    content:
+      'New fiscal policies have sent ripples through the global markets. Experts analyze the potential long-term effects on trade and investment across major economies.',
     mainImage: 'https://i.ibb.co/3YYvGvV/stock-market.jpg',
     images: [
       'https://i.ibb.co/3YYvGvV/stock-market.jpg',
