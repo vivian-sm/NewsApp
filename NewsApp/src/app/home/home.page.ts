@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NEWS_ARTICLES, NEWS_CATEGORIES } from '../news-data';
+import { NEWS_ARTICLES, NEWS_CATEGORIES } from '../data';
 
 @Component({
   selector: 'app-home',
