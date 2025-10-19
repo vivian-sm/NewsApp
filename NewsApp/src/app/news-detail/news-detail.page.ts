@@ -49,10 +49,11 @@ export class NewsDetailPage implements OnInit {
 
   addComment() {
     if (this.newComment.trim().length > 0) {
+      const currentUserName = localStorage.getItem('currentName') || 'You';
       const currentUsername = localStorage.getItem('currentUser') || 'guest';
 
       const newUser: User = {
-      name: 'You',
+      name: currentUserName,
       username: currentUsername,
       password: '' 
     };
