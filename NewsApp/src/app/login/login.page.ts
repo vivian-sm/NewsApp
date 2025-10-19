@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
     if (isLoggedIn === 'true') {
       const currentUrl = window.location.pathname;
       if (currentUrl.includes('/login')) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/tabs']);
       }
     }
   }
@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
       localStorage.setItem('currentName', user.name);
       this.loginSuccess = true;
       this.loginError = false;
-      this.router.navigate(['/home']);
+      this.router.navigate(['/tabs']);
 
     } else {
       this.loginError = true;
