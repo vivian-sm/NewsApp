@@ -33,7 +33,7 @@ export class NewsDetailPage implements OnInit {
       const ratingKey = `rating_${currentUsername}_${this.article.id}`;
       const savedRating = localStorage.getItem(ratingKey);
       if (savedRating) {
-        this.userRating = +savedRating; // + untuk konversi string ke number
+        this.userRating = +savedRating;
       }
     });
   }
@@ -68,7 +68,6 @@ rateNews(rating: number) {
   const currentUsername = localStorage.getItem('currentUser') || 'guest';
   const ratingKey = `rating_${currentUsername}_${this.article.id}`;
 
-  // 3. Simpan ke localStorage
   localStorage.setItem(ratingKey, rating.toString());
 
   alert(`Terima kasih atas rating ${rating} bintang yang Anda berikan!`);
