@@ -11,10 +11,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
-  /*/{
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  //},*/
+  },
   {
     path: 'news-list',
     loadChildren: () => import('./news-list/news-list.module').then(m => m.NewsListPageModule)
@@ -24,8 +24,12 @@ const routes: Routes = [
     loadChildren: () => import('./news-detail/news-detail.module').then(m => m.NewsDetailPageModule)
   },
   {
-    path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then(m => m.SearchPageModule)
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./favorites/favorites.module').then(m => m.FavoritesPageModule)
   }
 ];
 

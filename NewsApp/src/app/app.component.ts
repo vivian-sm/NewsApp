@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
-import { NEWS_CATEGORIES } from './data'; // Import kategori
+import { NEWS_CATEGORIES } from './data';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +15,26 @@ export class AppComponent {
   public currentUsername: string | null = '';
   public currentName: string | null = '';
   public profilePictureUrl: string = '';
+  public showTabs: boolean = false;
 
   constructor(
     private router: Router,
     private alertController: AlertController,
     private menu: MenuController
   ) {
+    // Panggil initializeApp
     this.initializeApp();
+
+    // Dengar perubahan rute
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/login') {
+          this.showTabs = false;
+        } else {
+          this.showTabs = true;
+        }
+      }
+    });
   }
 
   initializeApp() {
@@ -29,9 +42,10 @@ export class AppComponent {
     this.currentUsername = localStorage.getItem('currentUser');
     this.currentName = localStorage.getItem('currentName');
     this.profilePictureUrl = 'https://picsum.photos/150';
+
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (isLoggedIn === 'true') {
-      this.router.navigate(['/tabs']);
+      this.router.navigate(['/home']);
     }
   }
 
@@ -41,7 +55,7 @@ export class AppComponent {
   }
 
   async logout() {
-    this.menu.close(); // Tutup menu dulu
+    this.menu.close();
     const alert = await this.alertController.create({
       header: 'Konfirmasi Logout',
       message: 'Yakin ingin logout?',
@@ -54,7 +68,7 @@ export class AppComponent {
           text: 'Logout',
           handler: () => {
             localStorage.clear();
-            this.router.navigate(['/tabs']);
+            this.router.navigate(['/login']);
           },
         },
       ],
