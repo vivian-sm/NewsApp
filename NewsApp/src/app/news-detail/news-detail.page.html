@@ -34,11 +34,13 @@
   <ion-item lines="none" class="ion-padding-top">
     <ion-label>Beri Rating:</ion-label>
     <div>
-      <ion-button fill="clear" (click)="rateNews(1)"><ion-icon name="star-outline"></ion-icon></ion-button>
-      <ion-button fill="clear" (click)="rateNews(2)"><ion-icon name="star-outline"></ion-icon></ion-button>
-      <ion-button fill="clear" (click)="rateNews(3)"><ion-icon name="star-outline"></ion-icon></ion-button>
-      <ion-button fill="clear" (click)="rateNews(4)"><ion-icon name="star-outline"></ion-icon></ion-button>
-      <ion-button fill="clear" (click)="rateNews(5)"><ion-icon name="star-outline"></ion-icon></ion-button>
+      <ion-button fill="clear" *ngFor="let i of [1, 2, 3, 4, 5]" (click)="rateNews(i)">
+        <ion-icon 
+          slot="icon-only"
+          [name]="i <= userRating ? 'star' : 'star-outline'"
+          [color]="i <= userRating ? 'warning' : ''">
+        </ion-icon>
+      </ion-button>
     </div>
   </ion-item>
 
@@ -52,7 +54,7 @@
     <ion-list>
       <ion-item *ngFor="let comment of article.comments">
         <ion-label>
-          <strong>{{ comment.user }}</strong>
+          <strong>{{ comment.user.name }}</strong>
           <p>{{ comment.text }}</p>
         </ion-label>
       </ion-item>

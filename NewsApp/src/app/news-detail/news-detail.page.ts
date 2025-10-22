@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NEWS_ARTICLES } from '../data';
+import { User } from '../interfaces';
 
 @Component({
   selector: 'app-news-detail',
@@ -13,6 +14,7 @@ export class NewsDetailPage implements OnInit {
   article: any;
   newComment: string = '';
   selectedImage: string | undefined;
+  public userRating: number = 0;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -26,6 +28,12 @@ export class NewsDetailPage implements OnInit {
         if (this.article && this.article.images.length > 0) {
           this.selectedImage = this.article.images[0];
         }
+      }
+      const currentUsername = localStorage.getItem('currentUser') || 'guest';
+      const ratingKey = `rating_${currentUsername}_${this.article.id}`;
+      const savedRating = localStorage.getItem(ratingKey);
+      if (savedRating) {
+        this.userRating = +savedRating;
       }
     });
   }
@@ -41,15 +49,27 @@ export class NewsDetailPage implements OnInit {
 
   addComment() {
     if (this.newComment.trim().length > 0) {
-      this.article.comments.push({ user: 'You', text: this.newComment });
+      const currentUserName = localStorage.getItem('currentName') || 'You';
+      const currentUsername = localStorage.getItem('currentUser') || 'guest';
+
+      const newUser: User = {
+      name: currentUserName,
+      username: currentUsername,
+      password: '' 
+    };
+      this.article.comments.push({ user: newUser, text: this.newComment });
       this.newComment = '';
     }
   }
 
-  rateNews(rating: number) {
-    // Logika untuk menambahkan rating baru dan menghitung ulang rata-rata
-    // Untuk saat ini, kita hanya tampilkan pesan
-    console.log(`Anda memberikan rating: ${rating}`);
-    alert(`Terima kasih atas rating ${rating} bintang yang Anda berikan!`);
-  }
+rateNews(rating: number) {
+  this.userRating = rating;
+
+  const currentUsername = localStorage.getItem('currentUser') || 'guest';
+  const ratingKey = `rating_${currentUsername}_${this.article.id}`;
+
+  localStorage.setItem(ratingKey, rating.toString());
+
+  alert(`Terima kasih atas rating ${rating} bintang yang Anda berikan!`);
+}
 }

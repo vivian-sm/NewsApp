@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NEWS_ARTICLES, NEWS_CATEGORIES } from '../data';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+//import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +15,12 @@ export class HomePage {
   categories: string[] = [];
 
   constructor(
-    private router: Router,
-    private alertController: AlertController
+    private router: Router
+    //private alertController: AlertController
   ) {}
 
 
-  async logout() {
+  /*/async logout() {
     const alert = await this.alertController.create({
       header: 'Konfirmasi Logout',
       message: 'Yakin ingin logout?',
@@ -41,7 +41,7 @@ export class HomePage {
 
     await alert.present();
   }
-
+  */
 
   ngOnInit() {
     // Ambil 1 berita sebagai breaking news
