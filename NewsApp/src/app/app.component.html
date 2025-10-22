@@ -1,3 +1,60 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item lines="full">
+          <ion-avatar slot="start">
+            <img [src]="profilePictureUrl" />
+          </ion-avatar>
+          <ion-label>
+            <h2><strong>{{ currentName }}</strong></h2>
+            <p>{{ currentUsername }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-list-header>
+          <ion-label>Kategori Berita</ion-label>
+        </ion-list-header>
+        <ion-menu-toggle *ngFor="let cat of categories">
+          <ion-item button (click)="navigateToCategory(cat)">
+            <ion-label>{{ cat }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item button (click)="logout()" lines="full">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  <ion-tabs *ngIf="showTabs">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button routerLink="/home" routerLinkActive="tab-selected">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/search" routerLinkActive="tab-selected">
+        <ion-icon name="search-outline"></ion-icon>
+        <ion-label>Search</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button routerLink="/favorites" routerLinkActive="tab-selected">
+        <ion-icon name="bookmark-outline"></ion-icon>
+        <ion-label>Favorites</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+  
 </ion-app>
