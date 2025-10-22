@@ -10,7 +10,7 @@ import { NEWS_CATEGORIES } from './data';
   standalone: false,
 })
 export class AppComponent {
-  
+
   public categories: string[] = [];
   public currentUsername: string | null = '';
   public currentName: string | null = '';
@@ -22,13 +22,12 @@ export class AppComponent {
     private alertController: AlertController,
     private menu: MenuController
   ) {
-    // Panggil initializeApp
     this.initializeApp();
 
-    // Dengar perubahan rute
+    // Dengarkan perubahan rute
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        if (event.url === '/login') {
+        if (event.url === '/login' || event.url === '/') {
           this.showTabs = false;
         } else {
           this.showTabs = true;
@@ -62,13 +61,14 @@ export class AppComponent {
       buttons: [
         {
           text: 'Batal',
-          role: 'Cancel',
+          role: 'cancel',
         },
         {
           text: 'Logout',
           handler: () => {
+            console.log('Logout diklik');
             localStorage.clear();
-            this.router.navigate(['/login']);
+            window.location.href = '/login';
           },
         },
       ],
