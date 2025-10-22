@@ -19,30 +19,6 @@ export class HomePage {
     //private alertController: AlertController
   ) {}
 
-
-  /*/async logout() {
-    const alert = await this.alertController.create({
-      header: 'Konfirmasi Logout',
-      message: 'Yakin ingin logout?',
-      buttons: [
-        {
-          text: 'Batal',
-          role: 'Cancel',
-        },
-        {
-          text: 'Logout',
-          handler: () => {
-            localStorage.clear();
-            this.router.navigate(['/login']);
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-  }
-  */
-
   ngOnInit() {
     // Ambil 1 berita sebagai breaking news
     this.breakingNews = NEWS_ARTICLES[0];

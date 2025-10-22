@@ -31,14 +31,24 @@
     </ion-segment>
   </div>
 
-  <ion-item lines="none" class="ion-padding-top">
-    <ion-label>Beri Rating:</ion-label>
-    <div>
+  <ion-item lines="none" class="ion-padding-top" style="align-items: center;">
+    <ion-label style="min-width: 100px;">
+      <strong>Beri Rating:</strong>
+    </ion-label>
+
+    <div style="display: flex; align-items: center; gap: 6px; margin-right: 12px;">
+      <ion-icon name="star" color="warning" style="font-size: 20px;"></ion-icon>
+      <span style="font-size: 16px;">{{ article.rating }}</span>
+      <span style="font-size: 14px;">({{ article.ratingsCount }})</span>
+    </div>
+
+    <div style="display: flex; gap: 4px;">
       <ion-button fill="clear" *ngFor="let i of [1, 2, 3, 4, 5]" (click)="rateNews(i)">
         <ion-icon 
           slot="icon-only"
           [name]="i <= userRating ? 'star' : 'star-outline'"
-          [color]="i <= userRating ? 'warning' : ''">
+          [color]="i <= userRating ? 'warning' : ''"
+          style="font-size: 20px;">
         </ion-icon>
       </ion-button>
     </div>

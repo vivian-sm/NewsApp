@@ -1,4 +1,3 @@
-// data.ts
 import { NewsArticle, User } from './interfaces';
 
 export const USERS: User[] = [

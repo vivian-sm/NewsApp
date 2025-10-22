@@ -62,14 +62,27 @@ export class NewsDetailPage implements OnInit {
     }
   }
 
-rateNews(rating: number) {
-  this.userRating = rating;
+  rateNews(rating: number) {
+    const currentUsername = localStorage.getItem('currentUser') || 'guest';
+    const ratingKey = `rating_${currentUsername}_${this.article.id}`;
 
-  const currentUsername = localStorage.getItem('currentUser') || 'guest';
-  const ratingKey = `rating_${currentUsername}_${this.article.id}`;
+    const savedRating = localStorage.getItem(ratingKey);
+    if (savedRating) {
+      alert('Anda sudah memberi rating untuk berita ini.');
+      return;
+    }
 
-  localStorage.setItem(ratingKey, rating.toString());
+    localStorage.setItem(ratingKey, rating.toString());
 
-  alert(`Terima kasih atas rating ${rating} bintang yang Anda berikan!`);
-}
+    const totalRating = this.article.rating * this.article.ratingsCount;
+    const newTotalRating = totalRating + rating;
+    const newRatingsCount = this.article.ratingsCount + 1;
+    const newAverageRating = parseFloat((newTotalRating / newRatingsCount).toFixed(1));
+
+    this.article.rating = newAverageRating;
+    this.article.ratingsCount = newRatingsCount;
+    this.userRating = rating;
+
+    alert(`Terima kasih atas rating ${rating} bintang yang Anda berikan!`);
+  }
 }

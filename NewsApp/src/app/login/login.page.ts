@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
       localStorage.setItem('currentName', user.name);
       this.loginSuccess = true;
       this.loginError = false;
-      this.router.navigate(['/tabs']);
+      window.location.href = '/home';
 
     } else {
       this.loginError = true;
