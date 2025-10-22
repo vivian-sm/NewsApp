@@ -19,6 +19,7 @@ export interface NewsArticle {
   rating: number;
   ratingsCount: number;
   isFavorite: boolean;
+  views:number;
   content: string;
   mainImage: string;
   images: string[];

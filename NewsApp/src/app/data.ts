@@ -18,6 +18,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     rating: 4.5,
     ratingsCount: 150,
     isFavorite: false,
+    views: 3,
     content:
       'As a tech department, we’re usually pretty good at spotting tech that’s out of the ordinary. During time trials we’re used to seeing new aero innovation, and while there are certainly aero tricks used in road stages, they are harder to spot.',
     mainImage: 'assets/images/cyclist-group.png',
@@ -42,6 +43,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     rating: 4.8,
     ratingsCount: 210,
     isFavorite: true,
+    views: 0,
     content:
       'Volleyball requires a combination of strength, agility, and teamwork. This article explores the essential training regimens for aspiring volleyball players to excel on the court.',
     mainImage: 'assets/images/volleyball-training.png',
@@ -62,6 +64,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     rating: 4.9,
     ratingsCount: 500,
     isFavorite: false,
+    views: 0,
     content:
       'Artificial Intelligence is reshaping our world. From autonomous vehicles to personalized medicine, discover the breakthroughs that are defining the next generation of technology.',
     mainImage: 'assets/images/ai-technology.png',
@@ -82,6 +85,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     rating: 4.2,
     ratingsCount: 120,
     isFavorite: false,
+    views: 0,
     content:
       'New fiscal policies have sent ripples through the global markets. Experts analyze the potential long-term effects on trade and investment across major economies.',
     mainImage: 'assets/images/stock-market.png',
@@ -102,6 +106,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     rating: 4.7,
     ratingsCount: 320,
     isFavorite: false,
+    views: 0,
     content: 'A major breakthrough in quantum computing has been announced by leading researchers, promising to accelerate the development of ultra-fast and highly secure computing systems. This advancement involves the creation of more stable qubits and improved error correction techniques, which are essential for scaling quantum processors. Experts believe this could revolutionize industries such as cryptography, pharmaceuticals, and financial modeling, making previously impossible computations achievable in seconds.',
     mainImage: 'assets/images/quantum-computer.png',
     images: [
@@ -121,6 +126,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     rating: 4.6,
     ratingsCount: 180,
     isFavorite: false,
+    views: 0,
     content: 'Startup ecosystems across Southeast Asia are experiencing a surge in funding, driven by increased interest from global venture capital firms and government-backed innovation programs. Countries like Indonesia, Vietnam, and Singapore are leading the charge, with fintech, healthtech, and e-commerce startups attracting the most investment. Analysts predict that this trend will continue as digital adoption grows and regional markets mature, creating new opportunities for entrepreneurs and investors alike.',
     mainImage: 'assets/images/startup-funding.png',
     images: [
@@ -140,6 +146,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     rating: 4.4,
     ratingsCount: 95,
     isFavorite: false,
+    views: 0,
     content: 'Mental health has become a growing concern in the world of sports, with athletes increasingly speaking out about the pressures they face both on and off the field. From performance anxiety to burnout, the psychological challenges of competitive sports are gaining recognition. Organizations and teams are now implementing mental wellness programs, offering counseling and support to help athletes maintain balance and resilience. This shift marks a significant step toward destigmatizing mental health in athletic communities.',
     mainImage: 'assets/images/mental-health-sports.png',
     images: [
