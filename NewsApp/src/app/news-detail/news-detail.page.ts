@@ -25,8 +25,12 @@ export class NewsDetailPage implements OnInit {
         this.article = NEWS_ARTICLES.find(
           (article) => article.id === +articleId
         );
-        if (this.article && this.article.images.length > 0) {
-          this.selectedImage = this.article.images[0];
+        if (this.article) {
+          this.article.views = (this.article.views || 0) + 1; 
+
+          if (this.article.images.length > 0) {
+            this.selectedImage = this.article.images[0];
+          }
         }
       }
       const currentUsername = localStorage.getItem('currentUser') || 'guest';

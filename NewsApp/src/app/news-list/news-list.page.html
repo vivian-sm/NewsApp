@@ -24,6 +24,19 @@
             <ion-icon name="star" color="warning"></ion-icon> {{ article.rating }} ({{ article.ratingsCount }})
           </ion-col>
         </ion-row>
+
+        <ion-row class="ion-align-items-center" style="margin-top: 8px; color: var(--ion-color-medium-shade);">
+          <ion-col size="6">
+            <p style="display: inline-flex; align-items: center; margin: 0; font-size: 0.9em;">
+              <ion-icon name="eye-outline" style="margin-right: 4px;"></ion-icon> {{ article.views || 0 }}
+            </p>
+          </ion-col>
+          <ion-col size="6" class="ion-text-end">
+            <p style="display: inline-flex; align-items: center; margin: 0; font-size: 0.9em;">
+              <ion-icon name="chatbubbles-outline" style="margin-right: 4px;"></ion-icon> {{ article.comments.length }}
+            </p>
+          </ion-col> </ion-row>
+
       </ion-card-content>
     </ion-card>
   </ion-list>

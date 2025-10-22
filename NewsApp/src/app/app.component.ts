@@ -23,8 +23,6 @@ export class AppComponent {
     private menu: MenuController
   ) {
     this.initializeApp();
-
-    // Dengarkan perubahan rute
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/login' || event.url === '/') {
