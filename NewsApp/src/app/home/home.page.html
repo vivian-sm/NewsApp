@@ -30,6 +30,11 @@
         <ion-chip color="primary">{{ breakingNews.categories[0] }}</ion-chip>
         <h2>{{ breakingNews.title }}</h2>
         <p>{{ breakingNews.author }} • {{ breakingNews.date }}</p>
+        
+        <p style="font-size: 0.9rem; margin-top: 4px;">
+          <ion-icon name="eye-outline" style="vertical-align: middle;"></ion-icon> {{ breakingNews.views || 0 }}
+          <ion-icon name="chatbubbles-outline" style="vertical-align: middle; margin-left: 12px;"></ion-icon> {{ breakingNews.comments.length }}
+        </p>
       </div>
     </div>
   </ion-card>
@@ -58,6 +63,13 @@
         <p>{{ news.author }} • {{ news.date }}</p>
         <p>
           <ion-icon name="star" color="warning"></ion-icon> {{ news.rating }}
+
+          <span style="margin-left: 12px; display: inline-flex; align-items: center;">
+            <ion-icon name="eye-outline" style="margin-right: 2px;"></ion-icon> {{ news.views || 0 }}
+          </span>
+          <span style="margin-left: 12px; display: inline-flex; align-items: center;">
+            <ion-icon name="chatbubbles-outline" style="margin-right: 2px;"></ion-icon> {{ news.comments.length }}
+          </span>
         </p>
       </ion-label>
     </ion-item>

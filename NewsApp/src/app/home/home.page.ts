@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NEWS_ARTICLES, NEWS_CATEGORIES } from '../data';
 import { Router } from '@angular/router';
-//import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -16,16 +15,11 @@ export class HomePage {
 
   constructor(
     private router: Router
-    //private alertController: AlertController
   ) {}
 
   ngOnInit() {
-    // Ambil 1 berita sebagai breaking news
     this.breakingNews = NEWS_ARTICLES[0];
-    
-    // Ambil sisa berita sebagai rekomendasi
     this.recommendations = NEWS_ARTICLES.slice(1);
-    
     this.categories = NEWS_CATEGORIES;
   }
 }

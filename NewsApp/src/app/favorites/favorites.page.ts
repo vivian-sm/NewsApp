@@ -14,7 +14,6 @@ export class FavoritesPage implements OnInit {
   constructor() { }
 
   ionViewWillEnter() {
-    // Setiap kali masuk halaman ini, perbarui daftar favorit
     this.loadFavorites();
   }
 
